@@ -38,9 +38,5 @@ class HomeFragment : Fragment() {
             adapter = AdapterVertical(data)
             setHasFixedSize(true)
         }
-
-        binding.pageRecycler.layoutManager = LinearLayoutManager(context)
-        binding.pageRecycler.adapter = AdapterVertical(data)
-        binding.pageRecycler.setHasFixedSize(true)
     }
 }
