@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinema.R
-import com.example.cinema.framework.MyData
+import com.example.cinema.framework.datas.MyData
 
 class AdapterHorizontal(private val data: MyData) : RecyclerView.Adapter<AdapterHorizontal.Holder>() {
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -21,7 +21,7 @@ class AdapterHorizontal(private val data: MyData) : RecyclerView.Adapter<Adapter
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.filmImg.setImageResource(data.filmImg)
+
     }
 
     override fun getItemCount() = films
