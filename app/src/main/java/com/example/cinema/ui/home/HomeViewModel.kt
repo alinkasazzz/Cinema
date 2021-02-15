@@ -3,11 +3,13 @@ package com.example.cinema.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cinema.framework.MyData
+import com.example.cinema.framework.recyclerView.AdapterVertical
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private val _data = MutableLiveData<MyData>().apply {
+        value = MyData()
     }
-    val text: LiveData<String> = _text
+    val data: LiveData<MyData> = _data
 }
