@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinema.R
-import com.example.cinema.framework.MyData
+import com.example.cinema.framework.datas.MyData
 import com.google.android.material.textview.MaterialTextView
 
-class AdapterVertical(private val data:MyData): RecyclerView.Adapter<AdapterVertical.Holder>() {
+class AdapterVertical(private val data: MyData): RecyclerView.Adapter<AdapterVertical.Holder>() {
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
         var header: MaterialTextView = itemView.findViewById(R.id.header)
         val recyclerInner:RecyclerView = itemView.findViewById(R.id.recycler_inner)
@@ -23,7 +23,6 @@ class AdapterVertical(private val data:MyData): RecyclerView.Adapter<AdapterVert
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.header.text = data.headerText
         holder.recyclerInner.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = AdapterHorizontal(data)

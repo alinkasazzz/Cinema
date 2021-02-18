@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinema.databinding.FragmentHomeBinding
-import com.example.cinema.framework.MyData
+import com.example.cinema.framework.datas.MyData
 import com.example.cinema.framework.recyclerView.AdapterVertical
 
 class HomeFragment : Fragment() {
