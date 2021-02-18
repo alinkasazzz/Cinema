@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinema.databinding.FragmentHomeBinding
-import com.example.cinema.framework.datas.MyData
+import com.example.cinema.framework.datas.LatestPOJO
 import com.example.cinema.framework.recyclerView.AdapterVertical
 
 class HomeFragment : Fragment() {
@@ -25,13 +25,19 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        homeViewModel.data.observe(viewLifecycleOwner, {
-            createRecycler(it)
+        homeViewModel.getLiveData().observe(viewLifecycleOwner, {
+
         })
+
         return binding.root
     }
 
-    private fun createRecycler(data: MyData) {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun createRecycler(data: LatestPOJO) {
         // Список блоков
         binding.pageRecycler.apply {
             layoutManager = LinearLayoutManager(context)
