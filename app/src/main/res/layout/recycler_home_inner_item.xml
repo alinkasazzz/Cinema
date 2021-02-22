@@ -10,11 +10,12 @@
         android:id="@+id/film_img"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:contentDescription="@string/film_description"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/line30"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
         tools:srcCompat="@tools:sample/avatars" />
 
 </LinearLayout>
