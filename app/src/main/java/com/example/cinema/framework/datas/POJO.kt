@@ -1,6 +1,6 @@
 package com.example.cinema.framework.datas
 
-class POJO(
+data class POJO(
     val nowPlaying: NowPlaying,
     val popular: Popular,
     val topRated: TopRated,

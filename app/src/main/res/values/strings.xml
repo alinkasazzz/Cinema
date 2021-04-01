@@ -14,6 +14,8 @@
     <string name="popular">Популярные</string>
     <string name="topRated">Высокооцененные</string>
     <string name="upcoming">Ожидаемые</string>
+
+    <!--Ссылки-->
     <string name="img_URL">https://image.tmdb.org/t/p/w500/</string>
 
     <!--Информация о фильме-->

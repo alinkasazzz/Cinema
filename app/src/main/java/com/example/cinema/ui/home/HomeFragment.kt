@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel: HomeViewModel by lazy { ViewModelProvider(this).get(HomeViewModel::class.java) }
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         homeViewModel.data.observe(viewLifecycleOwner, {
             setLatest(it)
             createRecycler(it)

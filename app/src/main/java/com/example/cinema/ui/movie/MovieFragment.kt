@@ -13,7 +13,7 @@ import com.example.cinema.framework.ToolBarTitleListener
 import com.squareup.picasso.Picasso
 
 class MovieFragment : Fragment() {
-    private lateinit var movieViewModel: MovieViewModel
+    private val movieViewModel: MovieViewModel by lazy { ViewModelProvider(this).get(MovieViewModel::class.java) }
     private val args by navArgs<MovieFragmentArgs>()
     private val currentFilm by lazy { args.film }
     private var _binding: FragmentMovieBinding? = null
@@ -25,7 +25,6 @@ class MovieFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
-        movieViewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
         setMovieInfo()
 
         return binding.root

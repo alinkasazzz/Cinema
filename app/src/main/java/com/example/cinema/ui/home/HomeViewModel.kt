@@ -18,7 +18,6 @@ class HomeViewModel : ViewModel() {
         buildPOJO(_data)
     }
 
-
     private inline fun <reified T> getJsonData(json: String): T {
         val moshi = Moshi.Builder().build()
         val adapter = moshi.adapter(T::class.java)
