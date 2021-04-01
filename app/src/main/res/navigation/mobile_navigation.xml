@@ -8,7 +8,20 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.cinema.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/menu_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_movie"
+            app:destination="@id/nav_movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_movie"
+        android:name="com.example.cinema.ui.movie.MovieFragment"
+        android:label="MovieFragment"
+        tools:layout="@layout/fragment_movie">
+        <argument
+            android:name="Film"
+            app:argType="com.example.cinema.framework.datas.CurrentFilm"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

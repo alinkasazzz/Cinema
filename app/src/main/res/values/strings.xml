@@ -1,4 +1,5 @@
 <resources>
+    <!--Меню-->
     <string name="app_name">Поиск по фильмам</string>
     <string name="navigation_drawer_open">Открыть меню</string>
     <string name="navigation_drawer_close">Закрыть меню</string>
@@ -6,9 +7,22 @@
     <string name="nav_header_subtitle">Сазонова А.А.</string>
     <string name="nav_header_desc">Меню</string>
     <string name="action_settings">Настройки</string>
-
     <string name="menu_home">Главная</string>
 
-    <string name="film_description">Обложка</string>
-    <string name="btn_text">Клик</string>
+    <!--Заголовки-->
+    <string name="nowPlaying">Идут сейчас</string>
+    <string name="popular">Популярные</string>
+    <string name="topRated">Высокооцененные</string>
+    <string name="upcoming">Ожидаемые</string>
+
+    <!--Ссылки-->
+    <string name="img_URL">https://image.tmdb.org/t/p/w500/</string>
+
+    <!--Информация о фильме-->
+    <string name="original_title">Оригинальное название: %1$s</string>
+    <string name="original_language">Оригинальный язык: %1$s</string>
+    <string name="release_date">Дата релиза: %1$s</string>
+    <string name="vote_average">Оценка: %1$1.1f</string>
+    <string name="vote_count">Проголосовало: %1$d</string>
+
 </resources>
