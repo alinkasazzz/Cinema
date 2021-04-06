@@ -1,0 +1,26 @@
+com/example/cinema/databinding/FragmentMovieBinding.java
+ com.example.cinema.databinding.FragmentMovieBinding
+com/example/cinema/BuildConfig.java
+ com.example.cinema.BuildConfig
+com/example/cinema/databinding/RecyclerHomeItemBinding.java
+ com.example.cinema.databinding.RecyclerHomeItemBinding
+com/example/cinema/ui/home/HomeFragmentDirections.java
+ com.example.cinema.ui.home.HomeFragmentDirections
+ com.example.cinema.ui.home.HomeFragmentDirections$1
+ com.example.cinema.ui.home.HomeFragmentDirections$ActionNavHomeToNavMovie
+com/example/cinema/databinding/ActivityMainBinding.java
+ com.example.cinema.databinding.ActivityMainBinding
+com/example/cinema/databinding/AppBarMainBinding.java
+ com.example.cinema.databinding.AppBarMainBinding
+com/example/cinema/databinding/ContentMainBinding.java
+ com.example.cinema.databinding.ContentMainBinding
+com/example/cinema/databinding/FragmentHomeBinding.java
+ com.example.cinema.databinding.FragmentHomeBinding
+com/example/cinema/ui/movie/MovieFragmentArgs.java
+ com.example.cinema.ui.movie.MovieFragmentArgs
+ com.example.cinema.ui.movie.MovieFragmentArgs$1
+ com.example.cinema.ui.movie.MovieFragmentArgs$Builder
+com/example/cinema/databinding/RecyclerHomeInnerItemBinding.java
+ com.example.cinema.databinding.RecyclerHomeInnerItemBinding
+com/example/cinema/databinding/NavHeaderMainBinding.java
+ com.example.cinema.databinding.NavHeaderMainBinding
