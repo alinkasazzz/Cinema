@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinema.R
-import com.example.cinema.framework.datas.POJO
+import com.example.cinema.framework.datas.Film
 import com.google.android.material.textview.MaterialTextView
 
-class AdapterVertical(private val data: POJO) : RecyclerView.Adapter<AdapterVertical.Holder>() {
+class AdapterVertical(private val map: MutableMap<String,List<Film>>) : RecyclerView.Adapter<AdapterVertical.Holder>() {
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var header: MaterialTextView = itemView.findViewById(R.id.header)
         val recyclerInner: RecyclerView = itemView.findViewById(R.id.recycler_inner)
@@ -34,7 +34,6 @@ class AdapterVertical(private val data: POJO) : RecyclerView.Adapter<AdapterVert
             1 -> {
                 header.text = header.context.getString(R.string.popular)
                 initRecyclerInner(holder, position)
-
             }
 
             2 -> {
@@ -54,7 +53,7 @@ class AdapterVertical(private val data: POJO) : RecyclerView.Adapter<AdapterVert
     private fun initRecyclerInner(holder: Holder, position: Int) {
         holder.recyclerInner.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = AdapterHorizontal(data, position)
+            adapter = AdapterHorizontal(map, position)
             setHasFixedSize(true)
         }
     }

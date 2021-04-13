@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() ,ToolBarTitleListener {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun updateTitle(title: String) {
+    override fun updateTitle(title: String?) {
         binding.appBarMain.toolbar.title = title
     }
 }
