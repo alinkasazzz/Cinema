@@ -1,50 +1,55 @@
 package com.example.cinema.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cinema.BuildConfig
-import com.example.cinema.framework.datas.POJO
-import com.squareup.moshi.Moshi
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import com.example.cinema.framework.API_KEY
+import com.example.cinema.framework.BASE_URL
+import com.example.cinema.framework.datas.Film
+import com.example.cinema.framework.repository.MoviesResponse
+import com.example.cinema.framework.repository.TmdbAPI
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 class HomeViewModel : ViewModel() {
 
-    private val _data: MutableLiveData<POJO> = MutableLiveData()
-    val data: LiveData<POJO> = _data
+    private val map = mutableMapOf<String, List<Film>>()
+    private val data = MutableLiveData<MutableMap<String, List<Film>>>()
 
-    init {
-        buildPOJO(_data)
+    private val retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build().create(TmdbAPI::class.java)
     }
 
-    private inline fun <reified T> getJsonData(json: String): T {
-        val moshi = Moshi.Builder().build()
-        val adapter = moshi.adapter(T::class.java)
-        return adapter.fromJson(json)!!
+    fun getDataMap(): LiveData<MutableMap<String, List<Film>>> {
+        getMovies("latest")
+        getMovies("now_playing")
+        getMovies("popular")
+        getMovies("top_rated")
+        getMovies("upcoming")
+        return data
     }
 
-    private fun buildPOJO(data: MutableLiveData<POJO>) {
-        Thread {
-            data.postValue(
-                POJO(
-                    getJsonData(getData("/movie/now_playing")),
-                    getJsonData(getData("/movie/popular")),
-                    getJsonData(getData("/movie/top_rated")),
-                    getJsonData(getData("/movie/upcoming"))
-                )
-            )
-        }.start()
-    }
+    private fun getMovies(category: String) {
+        val call = retrofit.getMovies(category, API_KEY, "ru", 1)
+        call.enqueue(object : Callback<MoviesResponse> {
+            override fun onResponse(
+                call: Call<MoviesResponse>,
+                response: Response<MoviesResponse>
+            ) {
+                map[category] = response.body()!!.results
+                data.postValue(map)
+            }
 
-    private fun getData(get: String): String {
-        val apiKey = BuildConfig.API_KEY_V3
-        val language = "ru"
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .get()
-            .url("https://api.themoviedb.org/3$get?api_key=$apiKey&language=$language&page=1")
-            .build()
-        return client.newCall(request).execute().body!!.string()
+            override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
+                Log.e("Ошибка", t.stackTraceToString())
+            }
+        })
     }
 }

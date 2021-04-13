@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\menss\\Android_Develop\\4. ANDROID\\Cinema\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\menss\\Android_Develop\\4. ANDROID\\Weather\\.gradle\\6.7.1\\caches\\transforms-3\\5648557fd935e67405de24d08d9ac009\\transformed\\appcompat-1.2.0\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\menss\\Android_Develop\\4. ANDROID\\Weather\\.gradle\\6.7.1\\caches\\transforms-3\\c551d83ad08dc92ba519fcba918d349c\\transformed\\appcompat-1.2.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

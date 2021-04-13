@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.cinema.R
 import com.example.cinema.databinding.FragmentMovieBinding
 import com.example.cinema.framework.ToolBarTitleListener
+import com.example.cinema.framework.IMG_URL
 import com.squareup.picasso.Picasso
 
 class MovieFragment : Fragment() {
@@ -36,10 +37,10 @@ class MovieFragment : Fragment() {
     }
 
     private fun setMovieInfo() {
-        (activity as ToolBarTitleListener).updateTitle(currentFilm!!.title)
+        (activity as ToolBarTitleListener).updateTitle(currentFilm?.title)
         Picasso
             .get()
-            .load("${context?.getString(R.string.img_URL)}${currentFilm?.poster_path}")
+            .load("${IMG_URL}${currentFilm?.poster_path}")
             .into(binding.poster)
         binding.originalTitle.text =
             context?.getString(R.string.original_title, currentFilm?.original_title)

@@ -5,7 +5,6 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.internal.Util
 import java.lang.NullPointerException
 import kotlin.Double
 import kotlin.Int
@@ -23,14 +22,14 @@ class FilmJsonAdapter(
       "original_title", "original_language", "release_date", "vote_average", "vote_count",
       "overview")
 
-  private val stringAdapter: JsonAdapter<String> = moshi.adapter(String::class.java, emptySet(),
-      "poster_path")
+  private val nullableStringAdapter: JsonAdapter<String?> = moshi.adapter(String::class.java,
+      emptySet(), "poster_path")
 
-  private val doubleAdapter: JsonAdapter<Double> = moshi.adapter(Double::class.java, emptySet(),
-      "vote_average")
+  private val nullableDoubleAdapter: JsonAdapter<Double?> =
+      moshi.adapter(Double::class.javaObjectType, emptySet(), "vote_average")
 
-  private val intAdapter: JsonAdapter<Int> = moshi.adapter(Int::class.java, emptySet(),
-      "vote_count")
+  private val nullableIntAdapter: JsonAdapter<Int?> = moshi.adapter(Int::class.javaObjectType,
+      emptySet(), "vote_count")
 
   override fun toString(): String = buildString(26) {
       append("GeneratedJsonAdapter(").append("Film").append(')') }
@@ -47,22 +46,14 @@ class FilmJsonAdapter(
     reader.beginObject()
     while (reader.hasNext()) {
       when (reader.selectName(options)) {
-        0 -> poster_path = stringAdapter.fromJson(reader) ?:
-            throw Util.unexpectedNull("poster_path", "poster_path", reader)
-        1 -> title = stringAdapter.fromJson(reader) ?: throw Util.unexpectedNull("title", "title",
-            reader)
-        2 -> original_title = stringAdapter.fromJson(reader) ?:
-            throw Util.unexpectedNull("original_title", "original_title", reader)
-        3 -> original_language = stringAdapter.fromJson(reader) ?:
-            throw Util.unexpectedNull("original_language", "original_language", reader)
-        4 -> release_date = stringAdapter.fromJson(reader) ?:
-            throw Util.unexpectedNull("release_date", "release_date", reader)
-        5 -> vote_average = doubleAdapter.fromJson(reader) ?:
-            throw Util.unexpectedNull("vote_average", "vote_average", reader)
-        6 -> vote_count = intAdapter.fromJson(reader) ?: throw Util.unexpectedNull("vote_count",
-            "vote_count", reader)
-        7 -> overview = stringAdapter.fromJson(reader) ?: throw Util.unexpectedNull("overview",
-            "overview", reader)
+        0 -> poster_path = nullableStringAdapter.fromJson(reader)
+        1 -> title = nullableStringAdapter.fromJson(reader)
+        2 -> original_title = nullableStringAdapter.fromJson(reader)
+        3 -> original_language = nullableStringAdapter.fromJson(reader)
+        4 -> release_date = nullableStringAdapter.fromJson(reader)
+        5 -> vote_average = nullableDoubleAdapter.fromJson(reader)
+        6 -> vote_count = nullableIntAdapter.fromJson(reader)
+        7 -> overview = nullableStringAdapter.fromJson(reader)
         -1 -> {
           // Unknown name, skip it.
           reader.skipName()
@@ -72,19 +63,14 @@ class FilmJsonAdapter(
     }
     reader.endObject()
     return Film(
-        poster_path = poster_path ?: throw Util.missingProperty("poster_path", "poster_path",
-            reader),
-        title = title ?: throw Util.missingProperty("title", "title", reader),
-        original_title = original_title ?: throw Util.missingProperty("original_title",
-            "original_title", reader),
-        original_language = original_language ?: throw Util.missingProperty("original_language",
-            "original_language", reader),
-        release_date = release_date ?: throw Util.missingProperty("release_date", "release_date",
-            reader),
-        vote_average = vote_average ?: throw Util.missingProperty("vote_average", "vote_average",
-            reader),
-        vote_count = vote_count ?: throw Util.missingProperty("vote_count", "vote_count", reader),
-        overview = overview ?: throw Util.missingProperty("overview", "overview", reader)
+        poster_path = poster_path,
+        title = title,
+        original_title = original_title,
+        original_language = original_language,
+        release_date = release_date,
+        vote_average = vote_average,
+        vote_count = vote_count,
+        overview = overview
     )
   }
 
@@ -94,21 +80,21 @@ class FilmJsonAdapter(
     }
     writer.beginObject()
     writer.name("poster_path")
-    stringAdapter.toJson(writer, value.poster_path)
+    nullableStringAdapter.toJson(writer, value.poster_path)
     writer.name("title")
-    stringAdapter.toJson(writer, value.title)
+    nullableStringAdapter.toJson(writer, value.title)
     writer.name("original_title")
-    stringAdapter.toJson(writer, value.original_title)
+    nullableStringAdapter.toJson(writer, value.original_title)
     writer.name("original_language")
-    stringAdapter.toJson(writer, value.original_language)
+    nullableStringAdapter.toJson(writer, value.original_language)
     writer.name("release_date")
-    stringAdapter.toJson(writer, value.release_date)
+    nullableStringAdapter.toJson(writer, value.release_date)
     writer.name("vote_average")
-    doubleAdapter.toJson(writer, value.vote_average)
+    nullableDoubleAdapter.toJson(writer, value.vote_average)
     writer.name("vote_count")
-    intAdapter.toJson(writer, value.vote_count)
+    nullableIntAdapter.toJson(writer, value.vote_count)
     writer.name("overview")
-    stringAdapter.toJson(writer, value.overview)
+    nullableStringAdapter.toJson(writer, value.overview)
     writer.endObject()
   }
 }
